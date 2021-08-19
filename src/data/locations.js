@@ -2,9 +2,8 @@ export default [
   {
     id: 1,
     name: 'Kalaupapa cliffs Hawaii',
-    label: `Molokai's famous sea cliffs are responsible for this and are among the highest in the world at three thousand feet above sea level.`,
     label:
-      'One of the most remote locations in Hawaii due to unique volcanic and geologic activity over millions of years.',
+      "Molokai's famous sea cliffs are responsible for this and are among the highest in the world at three thousand feet above sea level.",
     img: 'hawaii',
     color: '#9F3804',
     slider: [
@@ -69,7 +68,8 @@ export default [
   {
     id: 4,
     name: 'Cultural capital of Japan',
-    label: `Kyoto is home to roughly one quarter of Japan's national treasures, countless shrines and temples, and seventeen sites recognized by UNESCO as World Heritage Sites.`,
+    label:
+      "Kyoto is home to roughly one quarter of Japan's national treasures, countless shrines and temples, and seventeen sites recognized by UNESCO as World Heritage Sites.",
     img: 'japan',
     color: '#C5445E',
     slider: [
@@ -89,8 +89,9 @@ export default [
   },
   {
     id: 5,
-    name: `Luxor's Karnak Temple`,
-    label: `The largest religious building ever constructed. The temple of Karnak was known as Ipet-isu—or “most select of places”—by the ancient Egyptians. It is a city of temples built over 2,000 years.`,
+    name: "Luxor's Karnak Temple",
+    label:
+      'The largest religious building ever constructed. The temple of Karnak was known as Ipet-isu—or “most select of places”—by the ancient Egyptians. It is a city of temples built over 2,000 years.',
     img: 'karnak',
     color: '#FBB84B',
     slider: [
