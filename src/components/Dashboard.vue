@@ -5,16 +5,24 @@
     }"
   >
     <!-- <div class="blur"></div> -->
-    <div class="location"></div>
+    <div class="location">
+      <v-heading :label="location.name"></v-heading>
+      <p class="desc">{{ location.label }}</p>
+      <v-button label="View details" :locationId="location.id"></v-button>
+    </div>
   </main>
   <!-- <div>{{ location.name }}</div> -->
   <!-- <img :src="require(`@/assets/images/${location.img}.jpg`)" alt="location" /> -->
 </template>
 
+<dashboard :location="this.$store.getters.location"></dashboard>
+
 <script>
 export default {
-  props: {
-    location: Object,
+  data() {
+    return {
+      location: this.$store.getters.location,
+    };
   },
 };
 </script>
@@ -48,10 +56,11 @@ main {
 }
 
 .location {
-  max-width: 1200px;
-  width: 75%;
+  max-width: 120rem;
+  width: 100%;
   height: 500px;
-  // background-color: rgba(0, 0, 0, 0.45);
+  margin: 5rem;
+  background-color: rgba(0, 0, 0, 0.45);
   box-shadow: 0 0 0 150rem rgba(0, 0, 0, 0.65), 0 0 5px 2px rgba(255, 255, 255, 0.35);
   border-radius: 5rem;
   color: #fff;

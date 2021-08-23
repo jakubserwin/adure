@@ -1,7 +1,12 @@
 <template>
-  <a class="btn" :class="bgColor ? 'btn--white' : ''" :style="{ background: bgColor }">
+  <router-link
+    :to="'/location-' + locationId"
+    class="btn"
+    :class="bgColor ? 'btn--white' : ''"
+    :style="{ background: bgColor }"
+  >
     {{ label }}
-  </a>
+  </router-link>
 </template>
 
 <script>
@@ -9,6 +14,10 @@ export default {
   props: {
     label: {
       type: String,
+      required: true,
+    },
+    locationId: {
+      type: Number,
       required: true,
     },
     bgColor: {
@@ -28,6 +37,8 @@ export default {
   cursor: pointer;
   transition: all 0.2s;
   display: inline-block;
+  background: #fff;
+  text-decoration: none;
 
   &:hover {
     transform: translateY(-2.5px);

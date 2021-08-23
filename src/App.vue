@@ -1,16 +1,10 @@
 <template>
-  <dashboard :location="this.$store.getters.location"></dashboard>
-  <!-- <button @click="test">change</button> -->
+  <router-view></router-view>
 </template>
 
 <script>
-import Dashboard from './components/Dashboard.vue';
-
 export default {
   name: 'App',
-  components: {
-    Dashboard,
-  },
   methods: {
     test() {
       this.$store.dispatch('changeLocation');
@@ -25,6 +19,7 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap');
 
 :root {
   --color-dark: #0a0a0c;
@@ -38,5 +33,9 @@ export default {
 
 html {
   font-size: 62.5%;
+}
+
+.desc {
+  font: 400 1.6rem / 150% 'Nunito', sans-serif;
 }
 </style>
