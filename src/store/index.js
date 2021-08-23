@@ -27,20 +27,34 @@ const store = createStore({
   },
   actions: {
     nextLocation(context) {
-      //   const box = document.querySelector('.siema');
-      //   box.classList.toggle('animate');
-      //   setTimeout(() => {
-      context.commit('increaseIndex');
-      //     setTimeout(() => {
-      //       box.classList.toggle('animate');
-      //     }, 500);
-      //   }, 1500);
+      const box = document.querySelector('.location');
+      box.classList.toggle('animate');
+      setTimeout(() => {
+        context.commit('increaseIndex');
+        setTimeout(() => {
+          box.classList.toggle('animate');
+        }, 500);
+      }, 1000);
     },
     previousLocation(context) {
-      context.commit('decreaseIndex');
+      const box = document.querySelector('.location');
+      box.classList.toggle('animate');
+      setTimeout(() => {
+        context.commit('decreaseIndex');
+        setTimeout(() => {
+          box.classList.toggle('animate');
+        }, 500);
+      }, 1000);
     },
     exactLocation(context, payload) {
-      context.commit('setIndex', payload);
+      const box = document.querySelector('.location');
+      box.classList.toggle('animate');
+      setTimeout(() => {
+        context.commit('setIndex', payload);
+        setTimeout(() => {
+          box.classList.toggle('animate');
+        }, 500);
+      }, 1000);
     },
   },
 });

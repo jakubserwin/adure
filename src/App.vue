@@ -33,4 +33,8 @@ html {
 .desc {
   font: 400 1.6rem / 150% 'Nunito', sans-serif;
 }
+
+.animate {
+  opacity: 0;
+}
 </style>

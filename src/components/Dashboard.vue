@@ -63,6 +63,7 @@ main {
   position: relative;
   // overflow: hidden;
   --blurAmount: 3px;
+  transition: all 1.5s;
 }
 
 .blur {
@@ -105,11 +106,12 @@ main {
 }
 
 .location {
-  display: flex;
-  // height: 100%;
   flex-direction: column;
   align-items: center;
+  display: flex;
   gap: 2.5rem;
+
+  transition: all 1s;
 
   .desc {
     max-width: 60rem;
