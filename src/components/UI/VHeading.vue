@@ -22,7 +22,7 @@ export default {
   font: 900 6.4rem 'Roboto', sans-serif;
 
   &--dark {
-    color: #0a0a0c;
+    color: var(--color-dark);
   }
 }
 </style>

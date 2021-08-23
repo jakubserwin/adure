@@ -26,6 +26,10 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
 
+:root {
+  --color-dark: #0a0a0c;
+}
+
 * {
   padding: 0;
   margin: 0;
