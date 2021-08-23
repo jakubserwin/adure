@@ -135,16 +135,17 @@
   }
 
   &__link {
+    padding: 0.25rem 0;
+    overflow-x: hidden;
+
     a {
       --color: #adadad;
-      display: block;
       text-decoration: none;
       color: var(--color);
       font: 300 1.6rem 'Nunito', sans-serif;
       text-transform: uppercase;
-      transition: all 0.3s;
+      transition: all 0.5s;
       position: relative;
-      overflow: hidden;
 
       &::after {
         content: '';

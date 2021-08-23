@@ -10,7 +10,7 @@
       <div class="location">
         <v-heading :label="location.name"></v-heading>
         <p class="desc">{{ location.label }}</p>
-        <v-button label="View details" :locationId="location.id"></v-button>
+        <v-button label="View details"></v-button>
       </div>
       <div class="footer">
         <p class="footer__current-location">0{{ location.id }}</p>
