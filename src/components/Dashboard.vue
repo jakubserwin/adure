@@ -6,13 +6,12 @@
   >
     <!-- <div class="blur"></div> -->
     <div class="container">
-      <div class="header">*header*</div>
+      <v-header></v-header>
       <div class="location">
         <v-heading :label="location.name"></v-heading>
         <p class="desc">{{ location.label }}</p>
         <v-button label="View details" :locationId="location.id"></v-button>
       </div>
-
       <div class="footer">
         <p class="footer__current-location">0{{ location.id }}</p>
         <div class="footer__socials">
@@ -27,25 +26,28 @@
           </a>
         </div>
       </div>
+      <control-panel :active="location.id"></control-panel>
     </div>
   </main>
-  <!-- <div>{{ location.name }}</div> -->
-  <!-- <img :src="require(`@/assets/images/${location.img}.jpg`)" alt="location" /> -->
 </template>
 
 <script>
 import { Twitter, Instagram, Facebook } from 'mdue';
+import VHeader from './UI/VHeader.vue';
+import ControlPanel from './ControlPanel.vue';
 
 export default {
-  data() {
-    return {
-      location: this.$store.getters.location,
-    };
+  computed: {
+    location() {
+      return this.$store.getters.location;
+    },
   },
   components: {
     Twitter,
     Instagram,
     Facebook,
+    VHeader,
+    ControlPanel,
   },
 };
 </script>
@@ -93,6 +95,8 @@ main {
   justify-content: space-between;
   padding: 3.5rem;
 
+  position: relative;
+
   // background-position: center center !important;
   // background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
   //   url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
@@ -115,7 +119,6 @@ main {
 
 .footer {
   display: flex;
-  // align-items: center;
   align-items: flex-end;
   justify-content: space-between;
 

@@ -5,11 +5,6 @@
 <script>
 export default {
   name: 'App',
-  methods: {
-    test() {
-      this.$store.dispatch('changeLocation');
-    },
-  },
   beforeMount() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--full-height', `${vh}px`);

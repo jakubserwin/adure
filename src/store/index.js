@@ -17,9 +17,16 @@ const store = createStore({
       if (state.currentLocationIndex === 4) state.currentLocationIndex = 0;
       else state.currentLocationIndex += 1;
     },
+    decreaseIndex(state) {
+      if (state.currentLocationIndex === 0) state.currentLocationIndex = 4;
+      else state.currentLocationIndex -= 1;
+    },
+    setIndex(state, payload) {
+      if (payload >= 0 && payload <= 4) state.currentLocationIndex = payload;
+    },
   },
   actions: {
-    changeLocation(context) {
+    nextLocation(context) {
       //   const box = document.querySelector('.siema');
       //   box.classList.toggle('animate');
       //   setTimeout(() => {
@@ -28,6 +35,12 @@ const store = createStore({
       //       box.classList.toggle('animate');
       //     }, 500);
       //   }, 1500);
+    },
+    previousLocation(context) {
+      context.commit('decreaseIndex');
+    },
+    exactLocation(context, payload) {
+      context.commit('setIndex', payload);
     },
   },
 });
