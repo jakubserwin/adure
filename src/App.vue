@@ -1,7 +1,6 @@
 <template>
-  <h1>app</h1>
   <dashboard :location="this.$store.getters.location"></dashboard>
-  <button @click="test">change</button>
+  <!-- <button @click="test">change</button> -->
 </template>
 
 <script>
@@ -17,12 +16,23 @@ export default {
       this.$store.dispatch('changeLocation');
     },
   },
+  beforeMount() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--full-height', `${vh}px`);
+  },
 };
 </script>
 
-<style lang="sass">
-*
-  padding: 0
-  margin: 0
-  box-box-sizing: border-box
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
 </style>
