@@ -20,7 +20,14 @@ const store = createStore({
   },
   actions: {
     changeLocation(context) {
+      //   const box = document.querySelector('.siema');
+      //   box.classList.toggle('animate');
+      //   setTimeout(() => {
       context.commit('increaseIndex');
+      //     setTimeout(() => {
+      //       box.classList.toggle('animate');
+      //     }, 500);
+      //   }, 1500);
     },
   },
 });
