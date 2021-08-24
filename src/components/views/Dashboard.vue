@@ -4,7 +4,7 @@
       background: 'url(' + require('@/assets/images/' + location.img + '.jpg') + ')',
     }"
   >
-    <!-- <div class="blur"></div> -->
+    <!-- <div class="blur></div> -->
     <div class="container">
       <v-header></v-header>
       <div class="location">
@@ -13,7 +13,7 @@
         <v-button label="View details" @click="showDetails"></v-button>
       </div>
       <v-footer></v-footer>
-      <control-panel :active="location.id"></control-panel>
+      <control-panel :active="location.id" mode="vertical"></control-panel>
       <location-details :active="detailsShown"></location-details>
     </div>
   </main>

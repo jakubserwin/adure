@@ -6,6 +6,7 @@ const store = createStore({
     return {
       currentLocationIndex: 0,
       locationDetailsShown: true,
+      locationsAmount: locations.length,
     };
   },
   getters: {
@@ -14,6 +15,9 @@ const store = createStore({
     },
     detailsShown(state) {
       return state.locationDetailsShown;
+    },
+    locationsLength(state) {
+      return state.locationsAmount;
     },
   },
   mutations: {

@@ -25,6 +25,7 @@
       </div>
       <div class="details__img">
         <img :src="require(`@/assets/images/${location.img}.jpg`)" />
+        <control-panel :active="location.id" mode="horizontal"></control-panel>
       </div>
     </div>
     <v-footer></v-footer>
@@ -34,9 +35,10 @@
 <script>
 import VHeader from './UI/VHeader.vue';
 import VFooter from './UI/VFooter.vue';
+import ControlPanel from './ControlPanel.vue';
 
 export default {
-  components: { VHeader, VFooter },
+  components: { VHeader, VFooter, ControlPanel },
   props: {
     active: {
       type: Boolean,
