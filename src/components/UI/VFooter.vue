@@ -47,8 +47,6 @@ export default {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  position: relative;
-  z-index: 5;
 
   &__current-location {
     font: 900 8rem / 0.75 'Roboto', sans-serif;

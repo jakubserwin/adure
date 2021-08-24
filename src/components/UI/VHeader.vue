@@ -137,8 +137,6 @@ export default {
   display: flex;
   align-items: center;
   gap: 5rem;
-  position: relative;
-  z-index: 10;
 
   ul {
     list-style: none;

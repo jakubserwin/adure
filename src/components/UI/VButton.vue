@@ -1,14 +1,7 @@
 <template>
-  <router-link
-    v-if="locationId"
-    :to="'/location-' + locationId"
-    class="btn"
-    :class="bgColor ? 'btn--white' : ''"
-    :style="{ background: bgColor }"
-  >
+  <button class="btn" :class="bgColor ? 'btn--white' : ''" :style="{ background: bgColor }">
     {{ label }}
-  </router-link>
-  <button v-else class="btn">{{ label }}</button>
+  </button>
 </template>
 
 <script>
@@ -17,9 +10,6 @@ export default {
     label: {
       type: String,
       required: true,
-    },
-    locationId: {
-      type: Number,
     },
     bgColor: {
       type: String,
