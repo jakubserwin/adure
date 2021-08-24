@@ -5,11 +5,15 @@ const store = createStore({
   state() {
     return {
       currentLocationIndex: 0,
+      locationDetailsShown: true,
     };
   },
   getters: {
     location(state) {
       return locations[state.currentLocationIndex];
+    },
+    detailsShown(state) {
+      return state.locationDetailsShown;
     },
   },
   mutations: {
@@ -23,6 +27,9 @@ const store = createStore({
     },
     setIndex(state, payload) {
       if (payload >= 0 && payload <= 4) state.currentLocationIndex = payload;
+    },
+    toggleDetails(state) {
+      state.locationDetailsShown = !state.locationDetailsShown;
     },
   },
   actions: {
@@ -55,6 +62,9 @@ const store = createStore({
           box.classList.toggle('animate');
         }, 500);
       }, 1000);
+    },
+    toggleLocationDetails(context) {
+      context.commit('toggleDetails');
     },
   },
 });

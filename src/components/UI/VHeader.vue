@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header" :class="darkMode ? 'header--dark' : ''">
     <div class="header__logo">
       <svg
         width="40"
@@ -122,11 +122,23 @@
   </div>
 </template>
 
+<script>
+export default {
+  computed: {
+    darkMode() {
+      return this.$store.getters.detailsShown;
+    },
+  },
+};
+</script>
+
 <style lang="scss" scoped>
 .header {
   display: flex;
   align-items: center;
   gap: 5rem;
+  position: relative;
+  z-index: 10;
 
   ul {
     list-style: none;
@@ -177,6 +189,21 @@
     flex: 1;
     display: flex;
     justify-content: flex-end;
+  }
+
+  &--dark {
+    svg path {
+      fill: var(--color-dark);
+    }
+
+    a {
+      color: rgb(105, 105, 105);
+    }
+
+    .active {
+      --color: var(--color-dark);
+      color: var(--color);
+    }
   }
 }
 </style>

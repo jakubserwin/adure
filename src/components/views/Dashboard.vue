@@ -10,44 +10,40 @@
       <div class="location">
         <v-heading :label="location.name"></v-heading>
         <p class="desc">{{ location.label }}</p>
-        <v-button label="View details"></v-button>
+        <v-button label="View details" @click="showDetails"></v-button>
       </div>
-      <div class="footer">
-        <p class="footer__current-location">0{{ location.id }}</p>
-        <div class="footer__socials">
-          <a href="#">
-            <twitter></twitter>
-          </a>
-          <a href="#">
-            <instagram></instagram>
-          </a>
-          <a href="#">
-            <facebook></facebook>
-          </a>
-        </div>
-      </div>
+      <v-footer></v-footer>
       <control-panel :active="location.id"></control-panel>
+      <location-details :active="detailsShown"></location-details>
     </div>
   </main>
 </template>
 
 <script>
-import { Twitter, Instagram, Facebook } from 'mdue';
-import VHeader from './UI/VHeader.vue';
-import ControlPanel from './ControlPanel.vue';
+import VHeader from '../UI/VHeader.vue';
+import VFooter from '../UI/VFooter.vue';
+import ControlPanel from '../ControlPanel.vue';
+import LocationDetails from '../LocationDetails.vue';
 
 export default {
   computed: {
     location() {
       return this.$store.getters.location;
     },
+    detailsShown() {
+      return this.$store.getters.detailsShown;
+    },
   },
   components: {
-    Twitter,
-    Instagram,
-    Facebook,
     VHeader,
+    VFooter,
     ControlPanel,
+    LocationDetails,
+  },
+  methods: {
+    showDetails() {
+      this.$store.dispatch('toggleLocationDetails');
+    },
   },
 };
 </script>
@@ -97,6 +93,7 @@ main {
   padding: 3.5rem;
 
   position: relative;
+  overflow: hidden;
 
   // background-position: center center !important;
   // background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
@@ -116,34 +113,6 @@ main {
   .desc {
     max-width: 60rem;
     text-align: center;
-  }
-}
-
-.footer {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-
-  &__current-location {
-    font: 900 8rem / 0.75 'Roboto', sans-serif;
-    opacity: 0.2;
-  }
-
-  &__socials {
-    display: flex;
-    gap: 1rem;
-
-    svg {
-      width: 2rem;
-      height: 2rem;
-      fill: #fff;
-      opacity: 0.5;
-      transition: all 0.3s;
-    }
-
-    a:hover svg {
-      opacity: 1;
-    }
   }
 }
 </style>
