@@ -6,8 +6,8 @@ const store = createStore({
     return {
       currentLocationIndex: 0,
       locationDetailsShown: false,
+      linkActive: false,
       locationsAmount: locations.length,
-      sliderImgsAmount: locations[0].slider.length,
     };
   },
   getters: {
@@ -20,8 +20,8 @@ const store = createStore({
     locationsLength(state) {
       return state.locationsAmount;
     },
-    sliderImgsAmount(state) {
-      return state.sliderImgsAmount;
+    pageShown(state) {
+      return state.linkActive;
     },
   },
   mutations: {
@@ -38,6 +38,9 @@ const store = createStore({
     },
     toggleDetails(state) {
       state.locationDetailsShown = !state.locationDetailsShown;
+    },
+    toggleLink(state) {
+      state.linkActive = !state.linkActive;
     },
   },
   actions: {
@@ -73,6 +76,9 @@ const store = createStore({
     },
     toggleLocationDetails(context) {
       context.commit('toggleDetails');
+    },
+    toggleLink(context) {
+      context.commit('toggleLink');
     },
   },
 });

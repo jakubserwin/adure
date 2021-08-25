@@ -105,16 +105,16 @@
     <nav>
       <ul>
         <li class="header__link">
-          <router-link to="/" class="active">home</router-link>
+          <router-link to="/" :class="{ active: path === '/' }">home</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/about">about</router-link>
+          <router-link to="/about" :class="{ active: path === '/about' }">about</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/contact">contact</router-link>
+          <router-link to="/contact" :class="{ active: path === '/contact' }">contact</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/faq">faq</router-link>
+          <router-link to="/faq" :class="{ active: path === '/faq' }">faq</router-link>
         </li>
       </ul>
     </nav>
@@ -126,7 +126,10 @@
 export default {
   computed: {
     darkMode() {
-      return this.$store.getters.detailsShown;
+      return this.$store.getters.detailsShown || this.$store.getters.pageShown;
+    },
+    path() {
+      return this.$route.path;
     },
   },
 };
@@ -166,7 +169,6 @@ export default {
         top: 100%;
         background: var(--color);
         transition: all 0.3s;
-        // transform: translateX(-100%);
       }
 
       &:hover {
@@ -190,6 +192,9 @@ export default {
   }
 
   &--dark {
+    transform: translateY(1.5rem);
+    opacity: 0;
+    animation: fadeIn 1s 1s forwards;
     svg path {
       fill: var(--color-dark);
     }

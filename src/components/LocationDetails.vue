@@ -55,9 +55,6 @@ export default {
     location() {
       return this.$store.getters.location;
     },
-    test() {
-      return this.$$store.getters.location.slider;
-    },
   },
 };
 </script>
@@ -82,6 +79,8 @@ export default {
     display: flex;
     align-items: center;
     gap: 7.5rem;
+
+    opacity: 0;
   }
 
   &__content {
@@ -108,6 +107,10 @@ export default {
 
 .active {
   transform: translateY(-100%);
+
+  .details__container {
+    animation: fadeIn 1s 1.25s forwards;
+  }
 }
 
 .details__desc::-webkit-scrollbar {

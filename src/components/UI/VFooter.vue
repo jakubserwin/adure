@@ -25,7 +25,7 @@ import { Twitter, Instagram, Facebook, ChevronDown } from 'mdue';
 export default {
   computed: {
     darkMode() {
-      return this.$store.getters.detailsShown;
+      return this.$store.getters.detailsShown || this.$store.getters.pageShown;
     },
   },
   components: {
@@ -82,6 +82,10 @@ export default {
   }
 
   &--dark {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    animation: fadeIn 1s 1.5s forwards;
+
     svg {
       fill: var(--color-dark);
       opacity: 0.75;

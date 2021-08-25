@@ -6,15 +6,18 @@
   >
     <!-- <div class="blur></div> -->
     <div class="container">
-      <v-header></v-header>
-      <div class="location">
-        <v-heading :label="location.name"></v-heading>
-        <p class="desc">{{ location.label }}</p>
-        <v-button label="View details" @click="showDetails"></v-button>
-      </div>
-      <v-footer></v-footer>
-      <control-panel :active="location.id"></control-panel>
-      <location-details :active="detailsShown"></location-details>
+      <transition name="fade-out">
+        <v-header v-if="!copomonentsVisible"></v-header>
+      </transition>
+      <router-view v-slot="{ Component }">
+        <transition>
+          <component :is="Component" />
+        </transition>
+      </router-view>
+      <transition name="fade-out">
+        <v-footer v-if="!copomonentsVisible"></v-footer>
+      </transition>
+      <control-panel :active="location.id" v-if="!copomonentsVisible"></control-panel>
     </div>
   </main>
 </template>
@@ -23,27 +26,20 @@
 import VHeader from '../UI/VHeader.vue';
 import VFooter from '../UI/VFooter.vue';
 import ControlPanel from '../ControlPanel.vue';
-import LocationDetails from '../LocationDetails.vue';
 
 export default {
   computed: {
     location() {
       return this.$store.getters.location;
     },
-    detailsShown() {
-      return this.$store.getters.detailsShown;
+    copomonentsVisible() {
+      return this.$store.getters.detailsShown || this.$store.getters.pageShown;
     },
   },
   components: {
     VHeader,
     VFooter,
     ControlPanel,
-    LocationDetails,
-  },
-  methods: {
-    showDetails() {
-      this.$store.dispatch('toggleLocationDetails');
-    },
   },
 };
 </script>
@@ -102,17 +98,18 @@ main {
   // background-position: center center;
 }
 
-.location {
-  flex-direction: column;
-  align-items: center;
-  display: flex;
-  gap: 2.5rem;
+.v-enter-from,
+.v-leave-to {
+  transform: translateY(100%);
+}
 
+.v-enter-active,
+.v-leave-active {
   transition: all 1s;
+}
 
-  .desc {
-    max-width: 60rem;
-    text-align: center;
-  }
+.v-enter-to,
+.v-leave-from {
+  transform: translateY(0);
 }
 </style>
