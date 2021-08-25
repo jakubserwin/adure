@@ -23,22 +23,28 @@
         </div>
         <v-button label="Book now" :bgColor="location.color"></v-button>
       </div>
-      <div class="details__img">
-        <img :src="require(`@/assets/images/${location.img}.jpg`)" />
-        <control-panel :active="location.id" mode="horizontal"></control-panel>
-      </div>
+      <Carousel :value="location.slider" :circular="true" :autoplayInterval="3000">
+        <template #item="slotProps">
+          <img :src="require(`@/assets/images/${slotProps.data.img}.jpg`)" />
+        </template>
+      </Carousel>
     </div>
     <v-footer></v-footer>
   </div>
 </template>
 
 <script>
+import Carousel from 'primevue/carousel';
+
 import VHeader from './UI/VHeader.vue';
 import VFooter from './UI/VFooter.vue';
-import ControlPanel from './ControlPanel.vue';
 
 export default {
-  components: { VHeader, VFooter, ControlPanel },
+  components: {
+    VHeader,
+    VFooter,
+    Carousel,
+  },
   props: {
     active: {
       type: Boolean,
@@ -49,6 +55,9 @@ export default {
     location() {
       return this.$store.getters.location;
     },
+    test() {
+      return this.$$store.getters.location.slider;
+    },
   },
 };
 </script>
@@ -58,7 +67,6 @@ export default {
   background: #fff;
   position: absolute;
   top: 100%;
-  // top: 0;
   left: 0;
   height: 100%;
   width: 100%;
@@ -80,15 +88,6 @@ export default {
     flex: 1;
   }
 
-  &__img {
-    flex: 1;
-
-    img {
-      border-radius: 1.5rem;
-      width: 100%;
-    }
-  }
-
   &__desc {
     margin-top: 1rem;
     margin-bottom: 2rem;
@@ -96,7 +95,7 @@ export default {
     flex-direction: column;
     gap: 1rem;
     overflow: auto;
-    max-height: 15rem;
+    max-height: 14.5rem;
     max-width: 45rem;
     padding-right: 3rem;
 
@@ -120,5 +119,67 @@ export default {
 .details__desc::-webkit-scrollbar-thumb {
   background: var(--color-dark);
   border-radius: 5rem;
+}
+</style>
+
+<style lang="scss">
+.p-carousel {
+  flex: 1;
+}
+
+.p-carousel-items-content {
+  border-radius: 1.5rem;
+  img {
+    display: flex;
+    height: 100%;
+    max-height: 30rem;
+    width: 100%;
+  }
+}
+
+.p-carousel-indicators {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.p-link {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  position: relative;
+  border: none;
+  background: var(--color-dark);
+  opacity: 0.15;
+
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.p-carousel-prev,
+.p-carousel-next {
+  background: none;
+  color: var(--color-dark);
+  opacity: 1;
+  align-self: flex-end;
+  top: 0;
+}
+
+.p-carousel-prev {
+  transform: translate(19rem, 2.5rem);
+}
+
+.p-carousel-next {
+  transform: translate(-19rem, 2.5rem);
+}
+
+.p-highlight {
+  button {
+    opacity: 1;
+  }
 }
 </style>

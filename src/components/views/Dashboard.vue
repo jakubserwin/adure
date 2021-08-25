@@ -13,7 +13,7 @@
         <v-button label="View details" @click="showDetails"></v-button>
       </div>
       <v-footer></v-footer>
-      <control-panel :active="location.id" mode="vertical"></control-panel>
+      <control-panel :active="location.id"></control-panel>
       <location-details :active="detailsShown"></location-details>
     </div>
   </main>

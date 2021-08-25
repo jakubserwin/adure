@@ -5,8 +5,9 @@ const store = createStore({
   state() {
     return {
       currentLocationIndex: 0,
-      locationDetailsShown: true,
+      locationDetailsShown: false,
       locationsAmount: locations.length,
+      sliderImgsAmount: locations[0].slider.length,
     };
   },
   getters: {
@@ -18,6 +19,9 @@ const store = createStore({
     },
     locationsLength(state) {
       return state.locationsAmount;
+    },
+    sliderImgsAmount(state) {
+      return state.sliderImgsAmount;
     },
   },
   mutations: {
