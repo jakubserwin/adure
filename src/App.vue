@@ -20,7 +20,9 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap');
 
 :root {
+  --color-primary: #61e786;
   --color-dark: #0a0a0c;
+  --color-white: #fafafa;
 }
 
 * {

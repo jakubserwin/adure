@@ -61,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .details {
-  background: #fff;
+  background: var(--color-white);
   position: absolute;
   top: 100%;
   left: 0;
