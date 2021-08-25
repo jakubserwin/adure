@@ -19,6 +19,7 @@
       </transition>
       <control-panel :active="location.id" v-if="!copomonentsVisible"></control-panel>
     </div>
+    <div class="backdrop" :class="isMenuActive ? 'backdrop--active' : ''"></div>
   </main>
 </template>
 
@@ -34,6 +35,9 @@ export default {
     },
     copomonentsVisible() {
       return this.$store.getters.detailsShown || this.$store.getters.pageShown;
+    },
+    isMenuActive() {
+      return this.$store.getters.menuActive;
     },
   },
   components: {
@@ -96,6 +100,18 @@ main {
   //   url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
   // background-size: auto calc(100vh + var(--blurAmount) * 4) !important;
   // background-position: center center;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: none;
+  backdrop-filter: blur(2.5px);
+
+  &--active {
+    display: block;
+  }
 }
 
 .v-enter-from,

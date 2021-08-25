@@ -118,11 +118,15 @@
         </li>
       </ul>
     </nav>
-    <div class="header__menu">*menu*</div>
+    <div class="header__menu">
+      <v-menu></v-menu>
+    </div>
   </div>
 </template>
 
 <script>
+import VMenu from './VMenu.vue';
+
 export default {
   computed: {
     darkMode() {
@@ -131,6 +135,9 @@ export default {
     path() {
       return this.$route.path;
     },
+  },
+  components: {
+    VMenu,
   },
 };
 </script>

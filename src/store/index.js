@@ -8,6 +8,7 @@ const store = createStore({
       locationDetailsShown: false,
       linkActive: false,
       locationsAmount: locations.length,
+      menuActive: false,
     };
   },
   getters: {
@@ -22,6 +23,9 @@ const store = createStore({
     },
     pageShown(state) {
       return state.linkActive;
+    },
+    menuActive(state) {
+      return state.menuActive;
     },
   },
   mutations: {
@@ -41,6 +45,9 @@ const store = createStore({
     },
     toggleLink(state) {
       state.linkActive = !state.linkActive;
+    },
+    toggleMenu(state) {
+      state.menuActive = !state.menuActive;
     },
   },
   actions: {
@@ -79,6 +86,9 @@ const store = createStore({
     },
     toggleLink(context) {
       context.commit('toggleLink');
+    },
+    toggleMenu(context) {
+      context.commit('toggleMenu');
     },
   },
 });
