@@ -105,16 +105,16 @@
     <nav>
       <ul>
         <li class="header__link">
-          <router-link to="/" :class="{ active: path === '/' }">home</router-link>
+          <router-link to="/">home</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/about" :class="{ active: path === '/about' }">about</router-link>
+          <router-link to="/about">about</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/contact" :class="{ active: path === '/contact' }">contact</router-link>
+          <router-link to="/contact">contact</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/faq" :class="{ active: path === '/faq' }">faq</router-link>
+          <router-link to="/faq">faq</router-link>
         </li>
       </ul>
     </nav>
@@ -132,9 +132,6 @@ export default {
     darkMode() {
       return this.$store.getters.detailsShown || this.$store.getters.pageShown;
     },
-    path() {
-      return this.$route.path;
-    },
   },
   components: {
     VMenu,
@@ -142,7 +139,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header {
   display: flex;
   align-items: center;
@@ -176,6 +173,7 @@ export default {
         top: 100%;
         background: var(--color);
         transition: all 0.3s;
+        border-radius: 5rem;
       }
 
       &:hover {
@@ -185,7 +183,7 @@ export default {
       }
     }
 
-    .active {
+    .router-link-active {
       --color: #fff;
       color: var(--color);
       font-weight: 400;
@@ -210,10 +208,15 @@ export default {
       color: rgb(105, 105, 105);
     }
 
-    .active {
+    .router-link-active {
       --color: var(--color-dark);
       color: var(--color);
     }
+
+    .header__menu {
+      display: none;
+    }
+    justify-content: space-between;
   }
 }
 </style>
