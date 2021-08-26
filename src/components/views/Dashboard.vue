@@ -121,7 +121,7 @@ main {
 
 .v-enter-active,
 .v-leave-active {
-  transition: all 1s;
+  transition: all 1.5s;
 }
 
 .v-enter-to,
