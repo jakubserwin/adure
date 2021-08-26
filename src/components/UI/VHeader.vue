@@ -105,16 +105,16 @@
     <nav>
       <ul>
         <li class="header__link">
-          <router-link to="/">home</router-link>
+          <router-link to="/" @click="hideDetails">home</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/about">about</router-link>
+          <router-link to="/about" @click="hideDetails">about</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/contact">contact</router-link>
+          <router-link to="/contact" @click="hideDetails">contact</router-link>
         </li>
         <li class="header__link">
-          <router-link to="/faq">faq</router-link>
+          <router-link to="/faq" @click="hideDetails">faq</router-link>
         </li>
       </ul>
     </nav>
@@ -135,6 +135,11 @@ export default {
   },
   components: {
     VMenu,
+  },
+  methods: {
+    hideDetails() {
+      if (this.$store.getters.detailsShown) this.$store.dispatch('toggleLocationDetails');
+    },
   },
 };
 </script>

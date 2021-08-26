@@ -8,31 +8,84 @@
     <nav class="menu__nav">
       <ul class="menu__list">
         <li>
-          <router-link to="/">home</router-link>
+          <router-link to="/" @click="toggleMenu">home</router-link>
         </li>
         <li>
-          <router-link to="/about">about</router-link>
+          <router-link to="/about" @click="toggleMenu">about</router-link>
         </li>
         <li>
-          <router-link to="/contact">contact</router-link>
+          <router-link to="/contact" @click="toggleMenu">contact</router-link>
         </li>
         <li>
-          <router-link to="/faq">faq</router-link>
+          <router-link to="/faq" @click="toggleMenu">faq</router-link>
         </li>
       </ul>
       <span class="menu__line"></span>
       <ul class="menu__list">
-        <li class="menu__location-link">Kalaupapa cliffs Hawaii</li>
-        <li class="menu__location-link">Perito Moreno Glacier</li>
-        <li class="menu__location-link">Banff National Park</li>
-        <li class="menu__location-link">Cultural capital of Japan</li>
-        <li class="menu__location-link">Luxor's Karnak Temple</li>
+        <li
+          class="menu__location-link"
+          @click="
+            toggleMenu();
+            exactLocation(0);
+          "
+        >
+          Kalaupapa cliffs Hawaii
+        </li>
+        <li
+          class="menu__location-link"
+          @click="
+            toggleMenu();
+            exactLocation(1);
+          "
+        >
+          Perito Moreno Glacier
+        </li>
+        <li
+          class="menu__location-link"
+          @click="
+            toggleMenu();
+            exactLocation(2);
+          "
+        >
+          Banff National Park
+        </li>
+        <li
+          class="menu__location-link"
+          @click="
+            toggleMenu();
+            exactLocation(3);
+          "
+        >
+          Cultural capital of Japan
+        </li>
+        <li
+          class="menu__location-link"
+          @click="
+            toggleMenu();
+            exactLocation(4);
+          "
+        >
+          Luxor's Karnak Temple
+        </li>
       </ul>
+      <div class="menu__socials">
+        <a href="#">
+          <twitter></twitter>
+        </a>
+        <a href="#">
+          <instagram></instagram>
+        </a>
+        <a href="#">
+          <facebook></facebook>
+        </a>
+      </div>
     </nav>
   </div>
 </template>
 
 <script>
+import { Twitter, Instagram, Facebook } from 'mdue';
+
 export default {
   computed: {
     active() {
@@ -42,9 +95,17 @@ export default {
       return this.$store.getters.detailsShown || this.$store.getters.pageShown;
     },
   },
+  components: {
+    Twitter,
+    Instagram,
+    Facebook,
+  },
   methods: {
     toggleMenu() {
       this.$store.dispatch('toggleMenu');
+    },
+    exactLocation(number) {
+      this.$store.dispatch('exactLocation', number);
     },
   },
 };
@@ -149,10 +210,27 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2.5rem;
 
-    &:last-child {
-      gap: 2.5rem;
+    &:first-child {
+      gap: 1.5rem;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+    svg {
+      color: var(--color-dark);
+      width: 2rem;
+      height: 2rem;
+      transition: all 0.3s;
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 
@@ -168,11 +246,16 @@ export default {
   &__location-link {
     text-transform: uppercase;
     color: var(--color-dark);
+    cursor: pointer;
   }
 
   a {
     font: 300 1.6rem 'Nunito', sans-serif;
     text-decoration: none;
+
+    &:hover {
+      font-weight: 600;
+    }
   }
 
   .router-link-active {
@@ -181,6 +264,11 @@ export default {
 
   &__location-link {
     font: 600 1.3rem 'Nunito', sans-serif;
+    transition: all 0.3s;
+
+    &:hover {
+      opacity: 0.5;
+    }
   }
 }
 </style>
