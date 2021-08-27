@@ -78,6 +78,7 @@ main {
 }
 
 .container {
+  max-width: 150rem;
   width: 75%;
   max-height: 90rem;
   height: 80%;
@@ -94,6 +95,10 @@ main {
 
   position: relative;
   overflow: hidden;
+
+  @media screen and (min-width: 1500px) {
+    padding: 5rem;
+  }
 
   // background-position: center center !important;
   // background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),

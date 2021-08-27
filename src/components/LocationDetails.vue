@@ -75,12 +75,20 @@ export default {
 
   padding: 3.5rem;
 
+  @media screen and (min-width: 1500px) {
+    padding: 5rem;
+  }
+
   &__container {
     display: flex;
     align-items: center;
     gap: 7.5rem;
 
     opacity: 0;
+
+    @media screen and (min-width: 1500px) {
+      gap: 5rem;
+    }
   }
 
   &__content {
@@ -97,6 +105,10 @@ export default {
     max-height: 14.5rem;
     max-width: 45rem;
     padding-right: 3rem;
+
+    @media screen and (min-width: 1500px) {
+      max-width: 55rem;
+    }
 
     .desc {
       color: var(--color-dark);
@@ -137,6 +149,10 @@ export default {
     height: 100%;
     max-height: 30rem;
     width: 100%;
+
+    @media screen and (min-width: 1500px) {
+      max-height: 40rem;
+    }
   }
 }
 
@@ -144,12 +160,15 @@ export default {
   margin-top: 1.5rem;
   display: flex;
   gap: 0.5rem;
+
+  button {
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+  }
 }
 
 .p-link {
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
   position: relative;
   border: none;
   background: var(--color-dark);
@@ -168,16 +187,8 @@ export default {
   background: none;
   color: var(--color-dark);
   opacity: 1;
-  align-self: flex-end;
   top: 0;
-}
-
-.p-carousel-prev {
-  transform: translate(19rem, 2.5rem);
-}
-
-.p-carousel-next {
-  transform: translate(-19rem, 2.5rem);
+  margin: 0 1rem;
 }
 
 .p-highlight {

@@ -52,6 +52,10 @@ export default {
   flex-direction: column;
   transform: translateY(-50%);
 
+  @media screen and (min-width: 1500px) {
+    left: 5rem;
+  }
+
   svg {
     fill: #fff;
 
