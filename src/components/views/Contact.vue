@@ -63,15 +63,26 @@ export default {
 
   padding: 3.5rem;
 
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1500px) {
+    padding: 5rem;
+  }
+
   &__container {
     display: flex;
     flex-direction: column;
     margin-top: 3.5rem;
     gap: 3.5rem;
+    flex: 1;
   }
 
   &__content {
     display: flex;
+    gap: 7.5rem;
+    flex: 1;
+
     & > * {
       flex: 1;
     }
@@ -80,17 +91,23 @@ export default {
   &__img {
     display: flex;
     flex-direction: column;
+    align-self: center;
 
     img {
       width: 100%;
       max-height: 30rem;
-      transform: scale(1.7) translateY(-3rem);
+      transform: scale(1.7);
+
+      @media screen and (min-width: 1500px) {
+        max-height: 35rem;
+      }
     }
 
     a {
       align-self: flex-end;
       color: rgb(218, 218, 218);
       text-decoration: none;
+      transform: translateY(4rem);
     }
   }
 }
@@ -100,12 +117,17 @@ export default {
   flex-direction: column;
   justify-content: space-between;
 
+  background: #fff;
+  padding: 3.5rem;
+  border-radius: 1rem;
+  box-shadow: rgba(149, 157, 165, 0.15) 0px 8px 24px;
+
   &__form {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 
-    max-width: 30rem;
+    max-width: none;
   }
 
   &__title {
@@ -163,8 +185,8 @@ export default {
 
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 30rem;
+    gap: 5rem;
+    justify-content: center;
 
     div {
       display: flex;

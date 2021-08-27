@@ -57,6 +57,13 @@ export default {
 
   padding: 3.5rem;
 
+  @media screen and (min-width: 1500px) {
+    padding: 5rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+
   &__container {
     margin-top: 3.5rem;
     opacity: 0;
@@ -64,14 +71,20 @@ export default {
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(2, max-content);
+    grid-template-rows: max-content 1fr;
     gap: 3.5rem;
     align-items: center;
+
+    flex: 1;
 
     img {
       width: 100%;
       border-radius: 1.5rem;
       max-height: 30rem;
+
+      @media screen and (min-width: 1500px) {
+        max-height: 40rem;
+      }
     }
   }
 
@@ -83,7 +96,8 @@ export default {
 
   &__cards {
     grid-column: 1/-1;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 5rem;
   }
 }

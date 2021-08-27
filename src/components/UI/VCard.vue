@@ -29,6 +29,10 @@ export default {
   border-radius: 1rem;
   text-align: center;
 
+  @media screen and (min-width: 1500px) {
+    padding: 4rem;
+  }
+
   &__title {
     font: 500 1.6rem 'Roboto', sans-serif;
     color: var(--color-dark);
@@ -37,6 +41,10 @@ export default {
   &__desc {
     font: 300 1.3rem 'Nunito', sans-serif;
     color: #262626;
+
+    @media screen and (min-width: 1500px) {
+      max-width: 18rem;
+    }
   }
 
   svg {
