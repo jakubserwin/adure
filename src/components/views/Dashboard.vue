@@ -112,6 +112,13 @@ main {
     width: 85%;
   }
 
+  @media screen and (max-width: 36em) {
+    margin: 3rem;
+    max-height: none;
+    height: calc(100% - 6rem);
+    justify-content: flex-start;
+  }
+
   // background-position: center center !important;
   // background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
   //   url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');

@@ -39,6 +39,12 @@ export default {
   display: flex;
   gap: 2.5rem;
 
+  text-align: center;
+
+  @media screen and (max-width: 36em) {
+    margin-top: 7.5rem;
+  }
+
   transition: all 1s;
 
   .desc {

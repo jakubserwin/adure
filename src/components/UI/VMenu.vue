@@ -191,6 +191,10 @@ export default {
     width: 45%;
   }
 
+  @media screen and (max-width: 36em) {
+    width: 100%;
+  }
+
   &--active {
     opacity: 1;
     transform: translateX(-100%);
@@ -216,7 +220,9 @@ export default {
     &:first-child {
       gap: 1.5rem;
 
-      display: none;
+      @media screen and (max-width: 36em) {
+        display: flex;
+      }
     }
   }
 
@@ -239,12 +245,15 @@ export default {
 
   &__line {
     background: #e2e2e2;
-    display: block;
     width: 100;
     height: 1px;
     border-radius: 1rem;
 
     display: none;
+
+    @media screen and (max-width: 36em) {
+      display: block;
+    }
   }
 
   a,

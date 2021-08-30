@@ -102,7 +102,7 @@
         />
       </svg>
     </div>
-    <nav>
+    <nav class="header__nav">
       <ul>
         <li class="header__link">
           <router-link to="/" @click="hideDetails">home</router-link>
@@ -146,6 +146,12 @@ export default {
   display: flex;
   align-items: center;
   gap: 5rem;
+
+  @media screen and (max-width: 36em) {
+    &__nav {
+      display: none;
+    }
+  }
 
   ul {
     list-style: none;

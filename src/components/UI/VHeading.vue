@@ -25,6 +25,10 @@ export default {
     font-size: 4.2rem;
   }
 
+  @media screen and (max-width: 36em) {
+    font-size: 3.2rem;
+  }
+
   &--dark {
     color: var(--color-dark);
   }

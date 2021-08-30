@@ -74,6 +74,13 @@ export default {
     }
   }
 
+  @media screen and (max-width: 36em) {
+    &__current-location,
+    &__socials {
+      display: none;
+    }
+  }
+
   &__details-cta {
     display: flex;
 
