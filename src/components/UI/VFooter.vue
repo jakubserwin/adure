@@ -74,7 +74,7 @@ export default {
     }
   }
 
-  @media screen and (max-width: 36em) {
+  @media screen and (max-width: 48em) {
     &__current-location,
     &__socials {
       display: none;
@@ -83,6 +83,11 @@ export default {
 
   &__details-cta {
     display: flex;
+
+    @media screen and (max-width: 48em) {
+      flex: 1;
+      justify-content: center;
+    }
 
     svg {
       cursor: pointer;

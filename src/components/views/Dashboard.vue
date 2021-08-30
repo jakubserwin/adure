@@ -47,9 +47,10 @@ export default {
   },
   methods: {
     swipeHandler(direction) {
-      if (this.copomonentsVisible || direction === 'top' || direction === 'bottom') return;
+      if (this.copomonentsVisible || direction === 'bottom') return;
       if (direction === 'right') this.$store.dispatch('previousLocation');
-      else this.$store.dispatch('nextLocation');
+      if (direction === 'left') this.$store.dispatch('nextLocation');
+      if (direction === 'top') this.$store.dispatch('toggleLocationDetails');
     },
   },
 };
@@ -114,6 +115,7 @@ main {
 
   @media screen and (max-width: 36em) {
     margin: 3rem;
+    padding: 3rem;
     max-height: none;
     height: calc(100% - 6rem);
     justify-content: flex-start;

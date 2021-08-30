@@ -1,5 +1,5 @@
 <template>
-  <div class="details" :class="active ? 'active' : ''">
+  <div class="details" :class="active ? 'active' : ''" v-touch:swipe="swipeHandler">
     <v-header></v-header>
     <div class="details__container">
       <div class="details__content">
@@ -56,6 +56,11 @@ export default {
       return this.$store.getters.location;
     },
   },
+  methods: {
+    swipeHandler(direction) {
+      if (direction === 'bottom') this.$store.dispatch('toggleLocationDetails');
+    },
+  },
 };
 </script>
 
@@ -75,8 +80,16 @@ export default {
 
   padding: 3.5rem;
 
-  @media screen and (min-width: 1500px) {
+  @media screen and (min-width: 93.75em) {
     padding: 5rem;
+  }
+
+  @media screen and (max-width: 36em) {
+    padding: 3rem;
+
+    .header {
+      display: none;
+    }
   }
 
   &__container {
@@ -86,13 +99,29 @@ export default {
 
     opacity: 0;
 
-    @media screen and (min-width: 1500px) {
+    @media screen and (min-width: 93.75em) {
       gap: 5rem;
+    }
+
+    @media screen and (max-width: 70em) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 3.5rem;
+      margin-top: 3rem;
     }
   }
 
   &__content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .btn {
+      align-self: flex-start;
+      @media screen and (max-width: 36em) {
+        align-self: center;
+      }
+    }
   }
 
   &__desc {
@@ -106,8 +135,17 @@ export default {
     max-width: 45rem;
     padding-right: 3rem;
 
-    @media screen and (min-width: 1500px) {
+    @media screen and (min-width: 93.75em) {
       max-width: 55rem;
+    }
+
+    @media screen and (max-width: 70em) {
+      max-width: none;
+      max-height: 6.5rem;
+    }
+
+    @media screen and (max-width: 36em) {
+      max-height: 10rem;
     }
 
     .desc {
@@ -145,13 +183,21 @@ export default {
 .p-carousel-items-content {
   border-radius: 1.5rem;
   img {
-    display: flex;
     height: 100%;
-    max-height: 30rem;
+    max-height: 35rem;
     width: 100%;
+    object-fit: cover;
 
-    @media screen and (min-width: 1500px) {
+    @media screen and (min-width: 93.75em) {
       max-height: 40rem;
+    }
+
+    @media screen and (max-width: 70em) {
+      max-height: 25rem;
+    }
+
+    @media screen and (max-width: 36em) {
+      max-height: 20rem;
     }
   }
 }
@@ -189,6 +235,10 @@ export default {
   opacity: 1;
   top: 0;
   margin: 0 1rem;
+
+  @media screen and (max-width: 70em) {
+    display: none;
+  }
 }
 
 .p-highlight {

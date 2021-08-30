@@ -219,6 +219,7 @@ export default {
 
     &:first-child {
       gap: 1.5rem;
+      display: none;
 
       @media screen and (max-width: 36em) {
         display: flex;

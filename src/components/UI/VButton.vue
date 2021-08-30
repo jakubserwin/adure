@@ -31,6 +31,10 @@ export default {
   background: #fff;
   text-decoration: none;
 
+  @media screen and (max-width: 36em) {
+    border-radius: 1.5rem;
+  }
+
   &:hover {
     transform: translateY(-2.5px);
   }
