@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import PrimeVue from 'primevue/config';
+import Vue3TouchEvents from 'vue3-touch-events';
 
 import 'primevue/resources/primevue.min.css';
 import 'primeicons/primeicons.css';
@@ -19,5 +20,6 @@ app.component('VButton', VButton);
 app.use(store);
 app.use(router);
 app.use(PrimeVue);
+app.use(Vue3TouchEvents);
 
 app.mount('#app');

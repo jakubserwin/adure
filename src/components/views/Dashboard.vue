@@ -5,7 +5,7 @@
     }"
   >
     <!-- <div class="blur></div> -->
-    <div class="container">
+    <div class="container" v-touch:swipe="swipeHandler">
       <transition name="fade-out">
         <v-header v-if="!copomonentsVisible"></v-header>
       </transition>
@@ -44,6 +44,13 @@ export default {
     VHeader,
     VFooter,
     ControlPanel,
+  },
+  methods: {
+    swipeHandler(direction) {
+      if (this.copomonentsVisible || direction === 'top' || direction === 'bottom') return;
+      if (direction === 'right') this.$store.dispatch('previousLocation');
+      else this.$store.dispatch('nextLocation');
+    },
   },
 };
 </script>
