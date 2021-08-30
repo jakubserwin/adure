@@ -17,11 +17,18 @@
       <div class="about__cards">
         <v-card v-for="card in cards" :key="card.id" :cardData="card"></v-card>
       </div>
+      <div class="about__undo">
+        <router-link to="/">
+          <undo></undo>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { Undo } from 'mdue';
+
 import cards from '../../data/cards';
 
 import VHeader from '../UI/VHeader.vue';
@@ -36,6 +43,7 @@ export default {
   components: {
     VHeader,
     VCard,
+    Undo,
   },
   mounted() {
     this.$store.dispatch('toggleLink');
@@ -57,8 +65,16 @@ export default {
 
   padding: 3.5rem;
 
-  @media screen and (min-width: 1500px) {
+  @media screen and (min-width: 93.75em) {
     padding: 5rem;
+  }
+
+  @media screen and (max-width: 36em) {
+    padding: 3rem;
+
+    .header {
+      display: none;
+    }
   }
 
   display: flex;
@@ -77,13 +93,22 @@ export default {
 
     flex: 1;
 
+    @media screen and (max-width: 70em) {
+      grid-template-columns: 1fr;
+      grid-template-rows: max-content max-content;
+    }
+
     img {
       width: 100%;
       border-radius: 1.5rem;
       max-height: 30rem;
 
-      @media screen and (min-width: 1500px) {
+      @media screen and (min-width: 93.75em) {
         max-height: 40rem;
+      }
+
+      @media screen and (max-width: 70em) {
+        display: none;
       }
     }
   }
@@ -97,13 +122,42 @@ export default {
   &__cards {
     grid-column: 1/-1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 5rem;
+
+    @media screen and (max-width: 70em) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (max-width: 36em) {
+      gap: 2.5rem;
+    }
+  }
+
+  &__undo {
+    display: none;
+
+    justify-content: center;
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      fill: var(--color-dark);
+    }
+
+    @media screen and (max-width: 36em) {
+      display: flex;
+    }
   }
 }
 
 .desc {
   color: var(--color-dark);
   font-weight: 300;
+
+  &:last-child {
+    @media screen and (max-width: 36em) {
+      display: none;
+    }
+  }
 }
 </style>
