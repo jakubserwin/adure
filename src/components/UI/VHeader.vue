@@ -113,9 +113,6 @@
         <li class="header__link">
           <router-link to="/contact" @click="hideDetails">contact</router-link>
         </li>
-        <li class="header__link">
-          <router-link to="/faq" @click="hideDetails">faq</router-link>
-        </li>
       </ul>
     </nav>
     <div class="header__menu">

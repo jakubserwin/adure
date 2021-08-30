@@ -16,9 +16,6 @@
         <li>
           <router-link to="/contact" @click="toggleMenu">contact</router-link>
         </li>
-        <li>
-          <router-link to="/faq" @click="toggleMenu">faq</router-link>
-        </li>
       </ul>
       <span class="menu__line"></span>
       <ul class="menu__list">
@@ -214,6 +211,8 @@ export default {
 
     &:first-child {
       gap: 1.5rem;
+
+      display: none;
     }
   }
 
@@ -240,6 +239,8 @@ export default {
     width: 100;
     height: 1px;
     border-radius: 1rem;
+
+    display: none;
   }
 
   a,
