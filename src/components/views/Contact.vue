@@ -28,12 +28,17 @@
           <a href="https://storyset.com/work">Work illustrations by Storyset</a>
         </div>
       </div>
+      <div class="contact__undo">
+        <router-link to="/">
+          <undo></undo>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { MapMarkerOutline, PhoneOutline } from 'mdue';
+import { MapMarkerOutline, PhoneOutline, Undo } from 'mdue';
 
 import VHeader from '../UI/VHeader.vue';
 
@@ -42,6 +47,7 @@ export default {
     VHeader,
     MapMarkerOutline,
     PhoneOutline,
+    Undo,
   },
   mounted() {
     this.$store.dispatch('toggleLink');
@@ -66,8 +72,16 @@ export default {
   display: flex;
   flex-direction: column;
 
-  @media screen and (min-width: 1500px) {
+  @media screen and (min-width: 93.75em) {
     padding: 5rem;
+  }
+
+  @media screen and (max-width: 36em) {
+    padding: 3rem;
+
+    .header {
+      display: none;
+    }
   }
 
   &__container {
@@ -93,12 +107,16 @@ export default {
     flex-direction: column;
     align-self: center;
 
+    @media screen and (max-width: 70em) {
+      display: none;
+    }
+
     img {
       width: 100%;
       max-height: 30rem;
       transform: scale(1.7);
 
-      @media screen and (min-width: 1500px) {
+      @media screen and (min-width: 93.75em) {
         max-height: 35rem;
       }
     }
@@ -108,6 +126,21 @@ export default {
       color: rgb(218, 218, 218);
       text-decoration: none;
       transform: translateY(4rem);
+    }
+  }
+
+  &__undo {
+    display: none;
+
+    justify-content: center;
+    svg {
+      width: 2.4rem;
+      height: 2.4rem;
+      fill: var(--color-dark);
+    }
+
+    @media screen and (max-width: 36em) {
+      display: flex;
     }
   }
 }
@@ -187,6 +220,11 @@ export default {
     align-items: center;
     gap: 5rem;
     justify-content: center;
+
+    @media screen and (max-width: 36em) {
+      flex-direction: column;
+      gap: 2.5rem;
+    }
 
     div {
       display: flex;
