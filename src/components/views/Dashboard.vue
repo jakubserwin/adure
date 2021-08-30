@@ -53,6 +53,7 @@ main {
   width: 100%;
   height: calc(var(--full-height, 1vh) * 100);
   background-size: cover !important;
+  background-position: center center !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,8 +97,12 @@ main {
   position: relative;
   overflow: hidden;
 
-  @media screen and (min-width: 1500px) {
+  @media screen and (min-width: 93.75em) {
     padding: 5rem;
+  }
+
+  @media screen and (max-width: 75em) {
+    width: 85%;
   }
 
   // background-position: center center !important;

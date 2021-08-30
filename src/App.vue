@@ -37,6 +37,10 @@ html {
 
 .desc {
   font: 400 1.6rem / 150% 'Nunito', sans-serif;
+
+  @media screen and (max-width: 70em) {
+    font-size: 1.5rem;
+  }
 }
 
 .animate {

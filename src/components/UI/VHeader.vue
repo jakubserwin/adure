@@ -166,6 +166,10 @@ export default {
       transition: all 0.5s;
       position: relative;
 
+      @media screen and (max-width: 70em) {
+        font-size: 1.5rem;
+      }
+
       &::after {
         content: '';
         position: absolute;

@@ -52,8 +52,17 @@ export default {
   flex-direction: column;
   transform: translateY(-50%);
 
-  @media screen and (min-width: 1500px) {
+  @media screen and (min-width: 93.75em) {
     left: 5rem;
+  }
+
+  @media screen and (max-width: 70em) {
+    left: 50%;
+    transform: translateX(-50%);
+    top: auto;
+    bottom: 3.5rem;
+
+    flex-direction: row;
   }
 
   svg {
@@ -66,6 +75,10 @@ export default {
 
     &:hover {
       opacity: 1;
+    }
+
+    @media screen and (max-width: 70em) {
+      transform: rotate(-90deg);
     }
   }
 }

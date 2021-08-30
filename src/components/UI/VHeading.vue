@@ -21,6 +21,10 @@ export default {
   color: #fff;
   font: 900 6.4rem 'Roboto', sans-serif;
 
+  @media screen and (max-width: 70em) {
+    font-size: 4.2rem;
+  }
+
   &--dark {
     color: var(--color-dark);
   }

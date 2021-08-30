@@ -187,6 +187,10 @@ export default {
   z-index: 5;
   opacity: 0;
 
+  @media screen and (max-width: 70em) {
+    width: 45%;
+  }
+
   &--active {
     opacity: 1;
     transform: translateX(-100%);

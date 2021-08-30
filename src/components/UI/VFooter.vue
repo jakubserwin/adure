@@ -51,6 +51,10 @@ export default {
   &__current-location {
     font: 900 8rem / 0.75 'Roboto', sans-serif;
     opacity: 0.2;
+
+    @media screen and (max-width: 70em) {
+      font-size: 6rem;
+    }
   }
 
   &__socials {
