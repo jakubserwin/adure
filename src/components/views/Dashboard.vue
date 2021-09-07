@@ -4,10 +4,9 @@
       background: 'url(' + require('@/assets/images/' + location.img + '.jpg') + ')',
     }"
   >
-    <!-- <div class="blur></div> -->
     <div class="container" v-touch:swipe="swipeHandler">
       <transition name="fade-out">
-        <v-header v-if="!copomonentsVisible"></v-header>
+        <v-header v-if="!isOverlayComponentActive"></v-header>
       </transition>
       <router-view v-slot="{ Component }">
         <transition>
@@ -15,43 +14,53 @@
         </transition>
       </router-view>
       <transition name="fade-out">
-        <v-footer v-if="!copomonentsVisible"></v-footer>
+        <v-footer v-if="!isOverlayComponentActive"></v-footer>
       </transition>
-      <control-panel :active="location.id" v-if="!copomonentsVisible"></control-panel>
+      <control-panel :active="location.id" v-if="!isOverlayComponentActive"></control-panel>
     </div>
     <div class="backdrop" :class="isMenuActive ? 'backdrop--active' : ''"></div>
   </main>
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
 import VHeader from '../UI/VHeader.vue';
 import VFooter from '../UI/VFooter.vue';
 import ControlPanel from '../ControlPanel.vue';
 
 export default {
-  computed: {
-    location() {
-      return this.$store.getters.location;
-    },
-    copomonentsVisible() {
-      return this.$store.getters.detailsShown || this.$store.getters.pageShown;
-    },
-    isMenuActive() {
-      return this.$store.getters.menuActive;
-    },
-  },
   components: {
     VHeader,
     VFooter,
     ControlPanel,
   },
-  methods: {
-    swipeHandler(direction) {
-      if (this.copomonentsVisible || direction === 'bottom') return;
-      if (direction === 'right') this.$store.dispatch('previousLocation');
-      if (direction === 'left') this.$store.dispatch('nextLocation');
-      if (direction === 'top') this.$store.dispatch('toggleLocationDetails');
-    },
+  setup() {
+    const store = useStore();
+
+    const location = computed(() => store.getters.location);
+
+    const isMenuActive = computed(() => store.getters.menuActive);
+
+    // prettier-ignore
+    const isOverlayComponentActive = computed(
+      () => store.getters.detailsShown || store.getters.pageShown,
+    );
+
+    const swipeHandler = (direction) => {
+      if (isOverlayComponentActive.value || direction === 'bottom') return;
+      if (direction === 'right') store.dispatch('previousLocation');
+      if (direction === 'left') store.dispatch('nextLocation');
+      if (direction === 'top') store.dispatch('toggleLocationDetails');
+    };
+
+    return {
+      location,
+      isMenuActive,
+      isOverlayComponentActive,
+      swipeHandler,
+    };
   },
 };
 </script>
@@ -66,24 +75,7 @@ main {
   align-items: center;
   justify-content: center;
   position: relative;
-  // overflow: hidden;
-  --blurAmount: 3px;
   transition: all 1.5s;
-}
-
-.blur {
-  position: absolute;
-  filter: blur(var(--blurAmount));
-  top: calc(0 - var(--blurAmount) * 2);
-  left: calc(0 - var(--blurAmount) * 2);
-  width: calc(100% + var(--blurAmount) * 4);
-  height: calc(100% + var(--blurAmount) * 4);
-
-  // background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
-  // background-size: cover !important;
-  // background-position: center center;
-
-  z-index: -1;
 }
 
 .container {
@@ -120,12 +112,6 @@ main {
     height: calc(100% - 6rem);
     justify-content: flex-start;
   }
-
-  // background-position: center center !important;
-  // background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-  //   url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80');
-  // background-size: auto calc(100vh + var(--blurAmount) * 4) !important;
-  // background-position: center center;
 }
 
 .backdrop {

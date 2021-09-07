@@ -10,24 +10,27 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
 import LocationDetails from '../LocationDetails.vue';
 
 export default {
-  computed: {
-    location() {
-      return this.$store.getters.location;
-    },
-    detailsShown() {
-      return this.$store.getters.detailsShown;
-    },
-  },
   components: {
     LocationDetails,
   },
-  methods: {
-    showDetails() {
-      this.$store.dispatch('toggleLocationDetails');
-    },
+  setup() {
+    const store = useStore();
+
+    const location = computed(() => store.getters.location);
+
+    const detailsShown = computed(() => store.getters.detailsShown);
+
+    const showDetails = () => {
+      store.dispatch('toggleLocationDetails');
+    };
+
+    return { location, detailsShown, showDetails };
   },
 };
 </script>

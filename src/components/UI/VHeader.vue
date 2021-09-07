@@ -122,21 +122,25 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
+import { computed } from 'vue';
+
 import VMenu from './VMenu.vue';
 
 export default {
-  computed: {
-    darkMode() {
-      return this.$store.getters.detailsShown || this.$store.getters.pageShown;
-    },
-  },
   components: {
     VMenu,
   },
-  methods: {
-    hideDetails() {
-      if (this.$store.getters.detailsShown) this.$store.dispatch('toggleLocationDetails');
-    },
+  setup() {
+    const store = useStore();
+    const darkMode = computed(() => store.getters.detailsShown || store.getters.pageShown);
+    const hideDetails = () => {
+      if (store.getters.detailsShown) {
+        store.dispatch('toggleLocationDetails');
+      }
+    };
+
+    return { darkMode, hideDetails };
   },
 };
 </script>

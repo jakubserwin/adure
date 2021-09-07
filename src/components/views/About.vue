@@ -28,6 +28,8 @@
 
 <script>
 import { Undo } from 'mdue';
+import { onMounted, onUnmounted } from 'vue';
+import { useStore } from 'vuex';
 
 import cards from '../../data/cards';
 
@@ -35,21 +37,18 @@ import VHeader from '../UI/VHeader.vue';
 import VCard from '../UI/VCard.vue';
 
 export default {
-  data() {
-    return {
-      cards,
-    };
-  },
   components: {
     VHeader,
     VCard,
     Undo,
   },
-  mounted() {
-    this.$store.dispatch('toggleLink');
-  },
-  unmounted() {
-    this.$store.dispatch('toggleLink');
+  setup() {
+    const store = useStore();
+
+    onMounted(() => store.dispatch('toggleLink'));
+    onUnmounted(() => store.dispatch('toggleLink'));
+
+    return { cards };
   },
 };
 </script>

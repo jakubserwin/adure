@@ -21,23 +21,22 @@
 <script>
 // eslint-disable-next-line
 import { Twitter, Instagram, Facebook, ChevronDown } from 'mdue';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
-  computed: {
-    darkMode() {
-      return this.$store.getters.detailsShown || this.$store.getters.pageShown;
-    },
-  },
   components: {
     Twitter,
     Instagram,
     Facebook,
     ChevronDown,
   },
-  methods: {
-    hideDetails() {
-      this.$store.dispatch('toggleLocationDetails');
-    },
+  setup() {
+    const store = useStore();
+    const darkMode = computed(() => store.getters.detailsShown || store.getters.pageShown);
+    const hideDetails = () => store.dispatch('toggleLocationDetails');
+
+    return { darkMode, hideDetails };
   },
 };
 </script>

@@ -39,6 +39,8 @@
 
 <script>
 import { MapMarkerOutline, PhoneOutline, Undo } from 'mdue';
+import { onMounted, onUnmounted } from 'vue';
+import { useStore } from 'vuex';
 
 import VHeader from '../UI/VHeader.vue';
 
@@ -49,11 +51,10 @@ export default {
     PhoneOutline,
     Undo,
   },
-  mounted() {
-    this.$store.dispatch('toggleLink');
-  },
-  unmounted() {
-    this.$store.dispatch('toggleLink');
+  setup() {
+    const store = useStore();
+    onMounted(() => store.dispatch('toggleLink'));
+    onUnmounted(() => store.dispatch('toggleLink'));
   },
 };
 </script>

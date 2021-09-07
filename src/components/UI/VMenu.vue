@@ -82,28 +82,29 @@
 
 <script>
 import { Twitter, Instagram, Facebook } from 'mdue';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 export default {
-  computed: {
-    active() {
-      return this.$store.getters.menuActive;
-    },
-    darkMode() {
-      return this.$store.getters.detailsShown || this.$store.getters.pageShown;
-    },
-  },
   components: {
     Twitter,
     Instagram,
     Facebook,
   },
-  methods: {
-    toggleMenu() {
-      this.$store.dispatch('toggleMenu');
-    },
-    exactLocation(number) {
-      this.$store.dispatch('exactLocation', number);
-    },
+  setup() {
+    const store = useStore();
+    const active = computed(() => store.getters.menuActive);
+    const darkMode = computed(() => store.getters.detailsShown || store.getters.pageShown);
+
+    const toggleMenu = () => store.dispatch('toggleMenu');
+    const exactLocation = (number) => store.dispatch('exactLocation', number);
+
+    return {
+      active,
+      darkMode,
+      toggleMenu,
+      exactLocation,
+    };
   },
 };
 </script>

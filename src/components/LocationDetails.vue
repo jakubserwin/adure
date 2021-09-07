@@ -34,6 +34,7 @@
 </template>
 
 <script>
+// import { useStore } from 'vuex';
 import Carousel from 'primevue/carousel';
 
 import VHeader from './UI/VHeader.vue';

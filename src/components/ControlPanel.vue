@@ -14,6 +14,7 @@
 
 <script>
 import { ChevronUp, ChevronDown } from 'mdue';
+import { useStore } from 'vuex';
 
 export default {
   props: {
@@ -22,20 +23,17 @@ export default {
       required: true,
     },
   },
-  methods: {
-    nextLocation() {
-      this.$store.dispatch('nextLocation');
-    },
-    previousLocation() {
-      this.$store.dispatch('previousLocation');
-    },
-    exactLocation(id) {
-      this.$store.dispatch('exactLocation', id);
-    },
-  },
   components: {
     ChevronUp,
     ChevronDown,
+  },
+  setup() {
+    const store = useStore();
+    const nextLocation = () => store.dispatch('nextLocation');
+    const previousLocation = () => store.dispatch('previousLocation');
+    const exactLocation = (id) => store.dispatch('exactLocation', id);
+
+    return { nextLocation, previousLocation, exactLocation };
   },
 };
 </script>
@@ -100,5 +98,6 @@ export default {
 
 .active {
   opacity: 1 !important;
+  pointer-events: none;
 }
 </style>
