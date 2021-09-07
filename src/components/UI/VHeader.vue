@@ -105,13 +105,13 @@
     <nav class="header__nav">
       <ul>
         <li class="header__link">
-          <router-link to="/" @click="hideDetails">home</router-link>
+          <a href="#" class="active">home</a>
         </li>
         <li class="header__link">
-          <router-link to="/about" @click="hideDetails">about</router-link>
+          <a href="#">about</a>
         </li>
         <li class="header__link">
-          <router-link to="/contact" @click="hideDetails">contact</router-link>
+          <a href="#">contact</a>
         </li>
       </ul>
     </nav>
@@ -133,14 +133,9 @@ export default {
   },
   setup() {
     const store = useStore();
-    const darkMode = computed(() => store.getters.detailsShown || store.getters.pageShown);
-    const hideDetails = () => {
-      if (store.getters.detailsShown) {
-        store.dispatch('toggleLocationDetails');
-      }
-    };
+    const darkMode = computed(() => store.getters.detailsShown);
 
-    return { darkMode, hideDetails };
+    return { darkMode };
   },
 };
 </script>
@@ -198,10 +193,8 @@ export default {
         }
       }
     }
-
-    .router-link-active {
-      --color: #fff;
-      color: var(--color);
+    .active {
+      color: #fff;
       font-weight: 400;
     }
   }
@@ -224,9 +217,8 @@ export default {
       color: rgb(105, 105, 105);
     }
 
-    .router-link-active {
-      --color: var(--color-dark);
-      color: var(--color);
+    .active {
+      color: var(--color-dark);
     }
 
     .header__menu {

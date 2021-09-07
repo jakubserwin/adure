@@ -3,14 +3,16 @@
 </template>
 
 <script>
+import { onBeforeMount } from 'vue';
 import Dashboard from './components/views/Dashboard.vue';
 
 export default {
   components: { Dashboard },
-  name: 'App',
-  beforeMount() {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--full-height', `${vh}px`);
+  setup() {
+    onBeforeMount(() => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--full-height', `${vh}px`);
+    });
   },
 };
 </script>

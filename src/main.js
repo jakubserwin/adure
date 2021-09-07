@@ -7,7 +7,6 @@ import 'primeicons/primeicons.css';
 
 import App from './App.vue';
 import store from './store';
-import router from './router';
 
 import VHeading from './components/UI/VHeading.vue';
 import VButton from './components/UI/VButton.vue';
@@ -18,7 +17,6 @@ app.component('VHeading', VHeading);
 app.component('VButton', VButton);
 
 app.use(store);
-app.use(router);
 app.use(PrimeVue);
 app.use(Vue3TouchEvents);
 

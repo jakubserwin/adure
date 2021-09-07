@@ -6,17 +6,15 @@
   >
     <div class="container" v-touch:swipe="swipeHandler">
       <transition name="fade-out">
-        <v-header v-if="!isOverlayComponentActive"></v-header>
+        <v-header v-if="!locationDetailsVisible"></v-header>
       </transition>
-      <router-view v-slot="{ Component }">
-        <transition>
-          <component :is="Component" />
-        </transition>
-      </router-view>
       <transition name="fade-out">
-        <v-footer v-if="!isOverlayComponentActive"></v-footer>
+        <location></location>
       </transition>
-      <control-panel :active="location.id" v-if="!isOverlayComponentActive"></control-panel>
+      <transition name="fade-out">
+        <v-footer v-if="!locationDetailsVisible"></v-footer>
+      </transition>
+      <control-panel :active="location.id" v-if="!locationDetailsVisible"></control-panel>
     </div>
     <div class="backdrop" :class="isMenuActive ? 'backdrop--active' : ''"></div>
   </main>
@@ -26,12 +24,14 @@
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
+import Location from './Location.vue';
 import VHeader from '../UI/VHeader.vue';
 import VFooter from '../UI/VFooter.vue';
 import ControlPanel from '../ControlPanel.vue';
 
 export default {
   components: {
+    Location,
     VHeader,
     VFooter,
     ControlPanel,
@@ -44,12 +44,12 @@ export default {
     const isMenuActive = computed(() => store.getters.menuActive);
 
     // prettier-ignore
-    const isOverlayComponentActive = computed(
-      () => store.getters.detailsShown || store.getters.pageShown,
+    const locationDetailsVisible = computed(
+      () => store.getters.detailsShown,
     );
 
     const swipeHandler = (direction) => {
-      if (isOverlayComponentActive.value || direction === 'bottom') return;
+      if (locationDetailsVisible.value || direction === 'bottom') return;
       if (direction === 'right') store.dispatch('previousLocation');
       if (direction === 'left') store.dispatch('nextLocation');
       if (direction === 'top') store.dispatch('toggleLocationDetails');
@@ -58,7 +58,7 @@ export default {
     return {
       location,
       isMenuActive,
-      isOverlayComponentActive,
+      locationDetailsVisible,
       swipeHandler,
     };
   },

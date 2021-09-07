@@ -8,13 +8,13 @@
     <nav class="menu__nav">
       <ul class="menu__list">
         <li>
-          <router-link to="/" @click="toggleMenu">home</router-link>
+          <a class="active" @click="toggleMenu">home</a>
         </li>
         <li>
-          <router-link to="/about" @click="toggleMenu">about</router-link>
+          <a @click="toggleMenu">about</a>
         </li>
         <li>
-          <router-link to="/contact" @click="toggleMenu">contact</router-link>
+          <a @click="toggleMenu">contact</a>
         </li>
       </ul>
       <span class="menu__line"></span>
@@ -94,7 +94,7 @@ export default {
   setup() {
     const store = useStore();
     const active = computed(() => store.getters.menuActive);
-    const darkMode = computed(() => store.getters.detailsShown || store.getters.pageShown);
+    const darkMode = computed(() => store.getters.detailsShown);
 
     const toggleMenu = () => store.dispatch('toggleMenu');
     const exactLocation = (number) => store.dispatch('exactLocation', number);
@@ -274,7 +274,7 @@ export default {
     }
   }
 
-  .router-link-active {
+  .active {
     font-weight: 600;
   }
 

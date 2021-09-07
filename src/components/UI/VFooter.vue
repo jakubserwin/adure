@@ -33,7 +33,7 @@ export default {
   },
   setup() {
     const store = useStore();
-    const darkMode = computed(() => store.getters.detailsShown || store.getters.pageShown);
+    const darkMode = computed(() => store.getters.detailsShown);
     const hideDetails = () => store.dispatch('toggleLocationDetails');
 
     return { darkMode, hideDetails };

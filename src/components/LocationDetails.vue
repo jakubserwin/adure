@@ -34,7 +34,8 @@
 </template>
 
 <script>
-// import { useStore } from 'vuex';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 import Carousel from 'primevue/carousel';
 
 import VHeader from './UI/VHeader.vue';
@@ -52,15 +53,15 @@ export default {
       required: true,
     },
   },
-  computed: {
-    location() {
-      return this.$store.getters.location;
-    },
-  },
-  methods: {
-    swipeHandler(direction) {
-      if (direction === 'bottom') this.$store.dispatch('toggleLocationDetails');
-    },
+  setup() {
+    const store = useStore();
+    const location = computed(() => store.getters.location);
+
+    const swipeHandler = (direction) => {
+      if (direction === 'bottom') store.dispatch('toggleLocationDetails');
+    };
+
+    return { location, swipeHandler };
   },
 };
 </script>
