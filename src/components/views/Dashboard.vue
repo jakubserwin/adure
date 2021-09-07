@@ -43,9 +43,7 @@ export default {
   },
   setup() {
     const store = useStore();
-
     const location = computed(() => store.getters.location);
-
     const isMenuActive = computed(() => store.getters.menuActive);
 
     // prettier-ignore
