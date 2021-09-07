@@ -35,6 +35,7 @@ export default {
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 .desc {

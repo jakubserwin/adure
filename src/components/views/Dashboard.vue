@@ -1,7 +1,7 @@
 <template>
   <main
     :style="{
-      background: 'url(' + location.img + ')',
+      background: 'url(' + require('@/assets/images/' + location.img + '.jpg') + ')',
     }"
   >
     <div class="container" v-touch:swipe="swipeHandler">
@@ -18,10 +18,15 @@
     </div>
     <div class="backdrop" :class="isMenuActive ? 'backdrop--active' : ''"></div>
   </main>
+  <img class="load-img" :src="require('@/assets/images/hawaii.jpg')" />
+  <img class="load-img" :src="require('@/assets/images/glacier.jpg')" />
+  <img class="load-img" :src="require('@/assets/images/park.jpg')" />
+  <img class="load-img" :src="require('@/assets/images/japan.jpg')" />
+  <img class="load-img" :src="require('@/assets/images/karnak.jpg')" />
 </template>
 
 <script>
-import { computed, onBeforeMount } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 import Location from './Location.vue';
@@ -43,18 +48,6 @@ export default {
 
     const isMenuActive = computed(() => store.getters.menuActive);
 
-    let image;
-
-    onBeforeMount(() => {
-      image = new Image();
-      // image.src = '@/assets/images/hawaii.jpg';
-      // eslint-disable-next-line
-      image.src = require('@/assets/images/hawaii.jpg');
-
-      // const image2 = new Image();
-      // image2.src = require('@/assets/images/japan.jpg');
-    });
-
     // prettier-ignore
     const locationDetailsVisible = computed(
       () => store.getters.detailsShown,
@@ -72,7 +65,6 @@ export default {
       isMenuActive,
       locationDetailsVisible,
       swipeHandler,
-      image,
     };
   },
 };
@@ -152,5 +144,14 @@ main {
 .v-enter-to,
 .v-leave-from {
   transform: translateY(0);
+}
+
+.load-img {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  transform: scale(0);
 }
 </style>

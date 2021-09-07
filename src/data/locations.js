@@ -4,9 +4,7 @@ export default [
     name: 'Kalaupapa cliffs Hawaii',
     label:
       "Molokai's famous sea cliffs are responsible for this and are among the highest in the world at three thousand feet above sea level.",
-    // img: 'hawaii',
-    // eslint-disable-next-line
-    img: require('@/assets/images/hawaii.jpg'),
+    img: 'hawaii',
     color: '#9F3804',
     slider: [
       {
@@ -28,8 +26,7 @@ export default [
     name: 'Perito Moreno Glacier',
     label:
       'One of the major tourist attractions in southern Patagonia and the rupture of this glacier is considered one of the most impressive natural spectacles in the world.',
-    // eslint-disable-next-line
-    img: require('@/assets/images/glacier.jpg'),
+    img: 'glacier',
     color: '#5191B8',
     slider: [
       {
