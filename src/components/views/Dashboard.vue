@@ -1,7 +1,7 @@
 <template>
   <main
     :style="{
-      background: 'url(' + require('@/assets/images/' + location.img + '.jpg') + ')',
+      background: 'url(' + location.img + ')',
     }"
   >
     <div class="container" v-touch:swipe="swipeHandler">
@@ -21,19 +21,13 @@
 </template>
 
 <script>
-import { computed } from 'vue';
+import { computed, onBeforeMount } from 'vue';
 import { useStore } from 'vuex';
 
 import Location from './Location.vue';
 import VHeader from '../UI/VHeader.vue';
 import VFooter from '../UI/VFooter.vue';
 import ControlPanel from '../ControlPanel.vue';
-
-const image = new Image();
-image.src = require('@/assets/images/hawaii.jpg');
-
-const image2 = new Image();
-image2.src = require('@/assets/images/japan.jpg');
 
 export default {
   components: {
@@ -48,6 +42,18 @@ export default {
     const location = computed(() => store.getters.location);
 
     const isMenuActive = computed(() => store.getters.menuActive);
+
+    let image;
+
+    onBeforeMount(() => {
+      image = new Image();
+      // image.src = '@/assets/images/hawaii.jpg';
+      // eslint-disable-next-line
+      image.src = require('@/assets/images/hawaii.jpg');
+
+      // const image2 = new Image();
+      // image2.src = require('@/assets/images/japan.jpg');
+    });
 
     // prettier-ignore
     const locationDetailsVisible = computed(
@@ -66,6 +72,7 @@ export default {
       isMenuActive,
       locationDetailsVisible,
       swipeHandler,
+      image,
     };
   },
 };
