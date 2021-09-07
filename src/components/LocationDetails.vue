@@ -1,7 +1,7 @@
 <template>
   <div class="details" :class="active ? 'active' : ''" v-touch:swipe="swipeHandler">
     <v-header></v-header>
-    <div class="details__container">
+    <div class="details__container" v-if="active">
       <div class="details__content">
         <v-heading :label="location.name" dark></v-heading>
         <div class="details__desc">

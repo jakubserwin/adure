@@ -29,6 +29,12 @@ import VHeader from '../UI/VHeader.vue';
 import VFooter from '../UI/VFooter.vue';
 import ControlPanel from '../ControlPanel.vue';
 
+const image = new Image();
+image.src = require('@/assets/images/hawaii.jpg');
+
+const image2 = new Image();
+image2.src = require('@/assets/images/japan.jpg');
+
 export default {
   components: {
     Location,
