@@ -1,8 +1,0 @@
-      :style="{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.05),rgba(0, 0, 0, 0.05)),
-        url(' + ${require('@/assets/images/' + location.img + '.jpg')} + ')`,
-      }"
-
-            :style="{
-        background: 'url(' + require('@/assets/images/' + location.img + '.jpg') + ')',
-      }"
