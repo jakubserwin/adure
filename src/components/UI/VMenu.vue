@@ -194,6 +194,7 @@ export default {
 
   @media screen and (max-width: 36em) {
     width: 100%;
+    border-radius: 2.5rem;
   }
 
   &--active {

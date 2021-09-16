@@ -114,6 +114,7 @@ main {
     max-height: none;
     height: calc(100% - 6rem);
     justify-content: flex-start;
+    border-radius: 2.5rem;
   }
 }
 

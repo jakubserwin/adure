@@ -88,6 +88,8 @@ export default {
 
   @media screen and (max-width: 36em) {
     padding: 3rem;
+    justify-content: center;
+    border-radius: 2.5rem;
 
     .header {
       display: none;
@@ -107,9 +109,7 @@ export default {
 
     @media screen and (max-width: 70em) {
       flex-direction: column-reverse;
-      align-items: flex-start;
-      gap: 3.5rem;
-      margin-top: 3rem;
+      gap: 0;
     }
   }
 
@@ -124,11 +124,15 @@ export default {
         align-self: center;
       }
     }
+
+    @media screen and (max-width: 70em) {
+      margin-top: 2.5rem;
+    }
   }
 
   &__desc {
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -184,6 +188,7 @@ export default {
 
 .p-carousel-items-content {
   border-radius: 1.5rem;
+
   img {
     height: 100%;
     max-height: 35rem;
@@ -199,7 +204,8 @@ export default {
     }
 
     @media screen and (max-width: 36em) {
-      max-height: 20rem;
+      max-height: 17rem;
+      border-radius: 1.5rem;
     }
   }
 }
